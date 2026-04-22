@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>CCA - Sistema Corporativo</title>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div class="sidebar" id="sidebar">
+  <div class="logo">CCA</div>
+
+  <ul class="menu">
+    <li class="active" onclick="openPage('dashboard', this)">
+      <i data-lucide="layout-dashboard"></i>
+      <span>Dashboard</span>
+    </li>
+    <li onclick="openPage('demandas', this)">
+      <i data-lucide="clipboard-list"></i>
+      <span>Demandas</span>
+    </li>
+    <li onclick="openPage('ia', this)">
+      <i data-lucide="cpu"></i>
+      <span>Triagem IA</span>
+    </li>
+    <li onclick="openPage('memoria', this)">
+      <i data-lucide="database"></i>
+      <span>Memória Viva</span>
+    </li>
+    <li onclick="openPage('relatorios', this)">
+      <i data-lucide="bar-chart"></i>
+      <span>Relatórios</span>
+    </li>
+  </ul>
+  <div class="background">
+    <button class="menu__icon" onclick="toggleSidebar()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="header">
+    <label class="menuButton">
+      <input id="menu-toggle" type="checkbox">
+      <span class="top"></span>
+      <span class="mid"></span>
+      <span class="bot"></span>
+    </label>
+    <h1 id="titulo">Dashboard</h1>
+  </div>
+
+  <div class="content">
+
+    <!-- DASHBOARD -->
+    <div id="dashboard" class="page active">
+      <!-- KPIs Principais -->
+      <div class="grid">
+        <div class="card kpi-card" style="background: linear-gradient(135deg, #0f6a47 0%, #063826 100%); color: white; border: none;">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div>
+              <div class="card-title" style="color: rgba(255,255,255,0.9); font-size: 14px;">Demandas Ativas</div>
+              <div class="card-value" style="font-size: 32px; margin: 10px 0; color: #f0c400; font-weight: bold; text-shadow: 0 1px 2px rgba(0,0,0,0.3);">32</div>
+              <div style="font-size: 12px; color: rgba(255,255,255,0.8);">
+                <i data-lucide="trending-up" style="width: 12px; margin-right: 3px;"></i>+8 esta semana
+              </div>
+            </div>
+            <i data-lucide="activity" style="width: 40px; height: 40px; color: rgba(255,255,255,0.3);"></i>
+          </div>
+        </div>
+        
+        <div class="card kpi-card" style="background: linear-gradient(135deg, #f0c400 0%, #c89f00 100%); color: white; border: none;">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div>
+              <div class="card-title" style="color: rgba(255,255,255,0.9); font-size: 14px;">Redução Tempo Médio</div>
+              <div class="card-value" style="font-size: 32px; margin: 10px 0;">-40%</div>
+              <div style="font-size: 12px; color: rgba(255,255,255,0.8);">
+                <i data-lucide="clock" style="width: 12px; margin-right: 3px;"></i>4.2h média
+              </div>
+            </div>
+            <i data-lucide="trending-down" style="width: 40px; height: 40px; color: rgba(255,255,255,0.3);"></i>
+          </div>
+        </div>
+        
+        <div class="card kpi-card" style="background: linear-gradient(135deg, #0a4d33 0%, #063826 100%); color: white; border: none;">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div>
+              <div class="card-title" style="color: rgba(255,255,255,0.9); font-size: 14px;">Taxa Resolução</div>
+              <div class="card-value" style="font-size: 32px; margin: 10px 0; color: #f0c400; font-weight: bold; text-shadow: 0 1px 2px rgba(0,0,0,0.3);">87%</div>
+              <div style="font-size: 12px; color: rgba(255,255,255,0.8);">
+                <i data-lucide="check-circle" style="width: 12px; margin-right: 3px;"></i>136/156 casos
+              </div>
+            </div>
+            <i data-lucide="target" style="width: 40px; height: 40px; color: rgba(255,255,255,0.3);"></i>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Métricas Secundárias -->
+      <div class="grid" style="margin-top: 20px;">
+        <div class="card metric-card">
+          <div style="display: flex; align-items: center; gap: 15px;">
+            <div style="background: #e8f5e9; padding: 12px; border-radius: 10px;">
+              <i data-lucide="users" style="width: 24px; color: #2e7d32;"></i>
+            </div>
+            <div>
+              <div class="card-title" style="margin: 0; font-size: 13px;">Integração Setores</div>
+              <div class="card-value" style="margin: 5px 0; font-size: 20px; color: #2e7d32;">3/3</div>
+              <div style="font-size: 11px; color: #666;">100% integrado</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card metric-card">
+          <div style="display: flex; align-items: center; gap: 15px;">
+            <div style="background: #fff3e0; padding: 12px; border-radius: 10px;">
+              <i data-lucide="database" style="width: 24px; color: #f57c00;"></i>
+            </div>
+            <div>
+              <div class="card-title" style="margin: 0; font-size: 13px;">Base Conhecimento</div>
+              <div class="card-value" style="margin: 5px 0; font-size: 20px; color: #f57c00;">89 itens</div>
+              <div style="font-size: 11px; color: #666;">+12 este mês</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card metric-card">
+          <div style="display: flex; align-items: center; gap: 15px;">
+            <div style="background: #fce4ec; padding: 12px; border-radius: 10px;">
+              <i data-lucide="cpu" style="width: 24px; color: #c2185b;"></i>
+            </div>
+            <div>
+              <div class="card-title" style="margin: 0; font-size: 13px;">IA Classificações</div>
+              <div class="card-value" style="margin: 5px 0; font-size: 20px; color: #c2185b;">92%</div>
+              <div style="font-size: 11px; color: #666;">Precisão</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Gráficos e Objetivos -->
+      <div class="grid" style="margin-top: 20px; grid-template-columns: 2fr 1fr;">
+        <div class="box">
+          <h3 style="margin-top: 0; color: #0a4d33; display: flex; align-items: center; gap: 10px;">
+            <i data-lucide="bar-chart-2" style="width: 20px;"></i>
+            Evolução das Demandas
+          </h3>
+          <div style="height: 200px; background: linear-gradient(to right, #f0f9ff, #e0f2fe); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin: 15px 0;">
+            <div style="text-align: center; color: #0a4d33;">
+              <div style="display: flex; gap: 30px; align-items: flex-end; height: 120px;">
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+                  <div style="background: #0a4d33; width: 30px; height: 40px; border-radius: 4px;"></div>
+                  <span style="font-size: 11px;">Jan</span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+                  <div style="background: #0a4d33; width: 30px; height: 60px; border-radius: 4px;"></div>
+                  <span style="font-size: 11px;">Fev</span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+                  <div style="background: #0a4d33; width: 30px; height: 80px; border-radius: 4px;"></div>
+                  <span style="font-size: 11px;">Mar</span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+                  <div style="background: #f0c400; width: 30px; height: 100px; border-radius: 4px;"></div>
+                  <span style="font-size: 11px;">Abr</span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+                  <div style="background: #0a4d33; width: 30px; height: 90px; border-radius: 4px;"></div>
+                  <span style="font-size: 11px;">Mai</span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+                  <div style="background: #0a4d33; width: 30px; height: 70px; border-radius: 4px;"></div>
+                  <span style="font-size: 11px;">Jun</span>
+                </div>
+              </div>
+              <div style="margin-top: 10px; font-size: 12px; color: #666;">
+                <strong style="color: #0a4d33;">32 demandas ativas</strong> • Média: 28/mês
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="box">
+          <h3 style="margin-top: 0; color: #0a4d33; display: flex; align-items: center; gap: 10px;">
+            <i data-lucide="target" style="width: 20px;"></i>
+            Objetivos CCA
+          </h3>
+          <div style="margin-top: 15px;">
+            <div style="margin-bottom: 12px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                <span style="font-size: 13px; color: #555;">Reduzir tempo resposta</span>
+                <span style="font-size: 12px; color: #2e7d32; font-weight: bold;">80%</span>
+              </div>
+              <div style="background: #e0e0e0; height: 6px; border-radius: 3px;">
+                <div style="background: linear-gradient(90deg, #4caf50, #8bc34a); width: 80%; height: 100%; border-radius: 3px;"></div>
+              </div>
+            </div>
+            
+            <div style="margin-bottom: 12px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                <span style="font-size: 13px; color: #555;">Eliminar retrabalho</span>
+                <span style="font-size: 12px; color: #f57c00; font-weight: bold;">65%</span>
+              </div>
+              <div style="background: #e0e0e0; height: 6px; border-radius: 3px;">
+                <div style="background: linear-gradient(90deg, #ff9800, #ffc107); width: 65%; height: 100%; border-radius: 3px;"></div>
+              </div>
+            </div>
+            
+            <div style="margin-bottom: 12px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                <span style="font-size: 13px; color: #555;">Integrar setores</span>
+                <span style="font-size: 12px; color: #2e7d32; font-weight: bold;">100%</span>
+              </div>
+              <div style="background: #e0e0e0; height: 6px; border-radius: 3px;">
+                <div style="background: linear-gradient(90deg, #4caf50, #8bc34a); width: 100%; height: 100%; border-radius: 3px;"></div>
+              </div>
+            </div>
+            
+            <div style="margin-bottom: 12px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                <span style="font-size: 13px; color: #555;">Base conhecimento</span>
+                <span style="font-size: 12px; color: #2196f3; font-weight: bold;">70%</span>
+              </div>
+              <div style="background: #e0e0e0; height: 6px; border-radius: 3px;">
+                <div style="background: linear-gradient(90deg, #2196f3, #03a9f4); width: 70%; height: 100%; border-radius: 3px;"></div>
+              </div>
+            </div>
+            
+            <div style="margin-top: 15px; padding: 10px; background: #f0f9ff; border-radius: 6px; border-left: 3px solid #0a4d33;">
+              <div style="font-size: 12px; color: #0a4d33; font-weight: bold;">Meta Final</div>
+              <div style="font-size: 11px; color: #555; margin-top: 2px;">Empresa mais eficiente, inclusiva e orientada por dados</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DEMANDAS -->
+    <div id="demandas" class="page">
+      <!-- Cards de Resumo -->
+      <div class="grid" style="margin-bottom: 25px;">
+        <div class="card" style="background: linear-gradient(135deg, #0f6a47 0%, #063826 100%); color: white; border: none;">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div>
+              <div style="font-size: 13px; opacity: 0.9;">Demandas Urgentes</div>
+              <div style="font-size: 24px; font-weight: bold; margin: 5px 0; color: #f0c400;">8</div>
+              <div style="font-size: 11px; opacity: 0.8;">Precisam atenção imediata</div>
+            </div>
+            <i data-lucide="alert-triangle" style="width: 32px; height: 32px; opacity: 0.3;"></i>
+          </div>
+        </div>
+        
+        <div class="card" style="background: linear-gradient(135deg, #f0c400 0%, #c89f00 100%); color: white; border: none;">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div>
+              <div style="font-size: 13px; opacity: 0.9;">Resolvidas Hoje</div>
+              <div style="font-size: 24px; font-weight: bold; margin: 5px 0; color: #ffffff;">5</div>
+              <div style="font-size: 11px; opacity: 0.8;">Meta diária atingida</div>
+            </div>
+            <i data-lucide="check-circle" style="width: 32px; height: 32px; opacity: 0.3;"></i>
+          </div>
+        </div>
+        
+        <div class="card" style="background: linear-gradient(135deg, #0a4d33 0%, #063826 100%); color: white; border: none;">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div>
+              <div style="font-size: 13px; opacity: 0.9;">Tempo Médio</div>
+              <div style="font-size: 24px; font-weight: bold; margin: 5px 0; color: #f0c400;">4.2h</div>
+              <div style="font-size: 11px; opacity: 0.8;">-40% vs mês passado</div>
+            </div>
+            <i data-lucide="clock" style="width: 32px; height: 32px; opacity: 0.3;"></i>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Filtros Avançados -->
+      <div class="box" style="margin-bottom: 25px; padding: 20px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+          <h3 style="margin: 0; color: #0a4d33; display: flex; align-items: center; gap: 10px;">
+            <i data-lucide="filter" style="width: 20px;"></i>
+            Filtros Inteligentes
+          </h3>
+          <button class="action" onclick="limparFiltros()" style="background: linear-gradient(135deg, #6c757d, #495057); padding: 8px 16px; font-size: 13px;">
+            <i data-lucide="refresh-cw" style="width: 14px; margin-right: 5px;"></i>Limpar
+          </button>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+          <div>
+            <label style="display: block; font-size: 12px; color: #666; margin-bottom: 5px; font-weight: 500;">Setor</label>
+            <select id="filtro-setor" onchange="aplicarFiltros()" style="width: 100%; padding: 10px; border: 1px solid #d4dbde; border-radius: 6px;">
+              <option>Todos os setores</option>
+              <option>RH</option>
+              <option>TI</option>
+              <option>Engenharia</option>
+            </select>
+          </div>
+          
+          <div>
+            <label style="display: block; font-size: 12px; color: #666; margin-bottom: 5px; font-weight: 500;">Status</label>
+            <select id="filtro-status" onchange="aplicarFiltros()" style="width: 100%; padding: 10px; border: 1px solid #d4dbde; border-radius: 6px;">
+              <option>Todos os status</option>
+              <option>Aberto</option>
+              <option>Em andamento</option>
+              <option>Resolvido</option>
+            </select>
+          </div>
+          
+          <div>
+            <label style="display: block; font-size: 12px; color: #666; margin-bottom: 5px; font-weight: 500;">Prioridade</label>
+            <select id="filtro-prioridade" onchange="aplicarFiltros()" style="width: 100%; padding: 10px; border: 1px solid #d4dbde; border-radius: 6px;">
+              <option>Todas as prioridades</option>
+              <option>Alta</option>
+              <option>Média</option>
+              <option>Baixa</option>
+              <option>Dramático Frio</option>
+            </select>
+          </div>
+          
+          <div>
+            <label style="display: block; font-size: 12px; color: #666; margin-bottom: 5px; font-weight: 500;">Período</label>
+            <select style="width: 100%; padding: 10px; border: 1px solid #d4dbde; border-radius: 6px;">
+              <option>Últimos 7 dias</option>
+              <option>Últimos 30 dias</option>
+              <option>Últimos 3 meses</option>
+            </select>
+          </div>
+        </div>
+        
+        <div style="margin-top: 15px; display: flex; gap: 10px;">
+          <button class="action" style="margin: 0; padding: 10px 20px;">
+            <i data-lucide="search" style="width: 14px; margin-right: 5px;"></i>Aplicar Filtros
+          </button>
+          <button class="action" onclick="exportar()" style="background: linear-gradient(135deg, #17a2b8, #138496); margin: 0; padding: 10px 20px;">
+            <i data-lucide="download" style="width: 14px; margin-right: 5px;"></i>Exportar
+          </button>
+        </div>
+      </div>
+      
+      <!-- Tabela de Demandas Modernizada -->
+      <div class="box" style="padding: 0; overflow: hidden;">
+        <div style="background: linear-gradient(135deg, #0a4d33 0%, #063826 100%); color: white; padding: 15px 20px; display: flex; align-items: center; justify-content: space-between;">
+          <h3 style="margin: 0; display: flex; align-items: center; gap: 10px;">
+            <i data-lucide="list" style="width: 20px;"></i>
+            Demandas Ativas
+            <span id="contador-itens" style="background: rgba(255,255,255,0.2); padding: 2px 8px; border-radius: 12px; font-size: 12px;">32 itens</span>
+          </h3>
+        </div>
+        
+        <div style="overflow-x: auto;">
+          <table class="table" style="margin: 0; border-radius: 0;">
+            <thead>
+              <tr style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+                <th style="padding: 15px 12px; font-weight: 600; color: #0a4d33; border-bottom: 2px solid #f0c400; border-right: 2px solid #d4dbde; text-align: center; min-width: 60px;">ID</th>
+                <th style="padding: 15px 12px; font-weight: 600; color: #0a4d33; border-bottom: 2px solid #f0c400; border-right: 2px solid #d4dbde; min-width: 100px;">Setor</th>
+                <th style="padding: 15px 12px; font-weight: 600; color: #0a4d33; border-bottom: 2px solid #f0c400; border-right: 2px solid #d4dbde; min-width: 200px;">Problema</th>
+                <th style="padding: 15px 12px; font-weight: 600; color: #0a4d33; border-bottom: 2px solid #f0c400; border-right: 2px solid #d4dbde; text-align: center; min-width: 80px;">Prioridade</th>
+                <th style="padding: 15px 12px; font-weight: 600; color: #0a4d33; border-bottom: 2px solid #f0c400; border-right: 2px solid #d4dbde; text-align: center; min-width: 80px;">Status</th>
+                <th style="padding: 15px 12px; font-weight: 600; color: #0a4d33; border-bottom: 2px solid #f0c400; text-align: center; min-width: 80px;">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Tabela será preenchida dinamicamente pelo JavaScript -->
+            </tbody>
+          </table>
+        </div>
+        
+        <!-- Paginação Moderna -->
+        <div class="pagination-container">
+          <div class="pagination-info">
+            <span class="pagination-text">Mostrando <span id="itens-inicio">1</span>-<span id="itens-fim">10</span> de <span id="itens-total">32</span> itens</span>
+          </div>
+          
+          <div class="pagination-controls">
+            <button id="btn-anterior" onclick="mudarPagina('anterior')" class="pagination-btn pagination-btn-nav" disabled>
+              <i data-lucide="chevron-left" style="width: 14px;"></i>
+              <span>Anterior</span>
+            </button>
+            
+            <div id="pagination-numbers" class="pagination-numbers">
+              <!-- Números serão gerados dinamicamente -->
+            </div>
+            
+            <button id="btn-proximo" onclick="mudarPagina('proxima')" class="pagination-btn pagination-btn-nav">
+              <span>Próximo</span>
+              <i data-lucide="chevron-right" style="width: 14px;"></i>
+            </button>
+          </div>
+          
+          <div class="pagination-per-page">
+            <label class="pagination-label">Itens por página: <strong>3</strong></label>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IA -->
+    <div id="ia" class="page">
+      <!-- Header da Triagem -->
+      <div class="card" style="background: linear-gradient(135deg, #0a4d33 0%, #063826 100%); color: white; border: none; margin-bottom: 25px;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <div>
+            <h3 style="margin: 0; display: flex; align-items: center; gap: 10px;">
+              <i data-lucide="brain-circuit" style="width: 24px;"></i>
+              Triagem Inteligente de Demandas
+            </h3>
+            <p style="margin: 5px 0 0 0; opacity: 0.9; font-size: 14px;">IA avançada para classificação automática de acessibilidade</p>
+          </div>
+          <div style="display: flex; gap: 10px; align-items: center;">
+            <div style="text-align: center;">
+              <div style="font-size: 20px; font-weight: bold; color: #f0c400;">98%</div>
+              <div style="font-size: 11px; opacity: 0.8;">Precisão</div>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-size: 20px; font-weight: bold; color: #f0c400;">2s</div>
+              <div style="font-size: 11px; opacity: 0.8;">Tempo</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Cards de Status -->
+      <div class="grid" style="margin-bottom: 25px;">
+        <div class="card" style="background: linear-gradient(135deg, #20bf6b 0%, #26de81 100%); color: white; border: none;">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div>
+              <div style="font-size: 13px; opacity: 0.9;">Análises Hoje</div>
+              <div style="font-size: 24px; font-weight: bold; margin: 5px 0;">47</div>
+              <div style="font-size: 11px; opacity: 0.8;">+15 vs ontem</div>
+            </div>
+            <i data-lucide="trending-up" style="width: 32px; height: 32px; opacity: 0.3;"></i>
+          </div>
+        </div>
+        
+        <div class="card" style="background: linear-gradient(135deg, #f0c400 0%, #c89f00 100%); color: white; border: none;">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div>
+              <div style="font-size: 13px; opacity: 0.9;">Classificações</div>
+              <div style="font-size: 24px; font-weight: bold; margin: 5px 0;">12</div>
+              <div style="font-size: 11px; opacity: 0.8;">Tipos diferentes</div>
+            </div>
+            <i data-lucide="layers" style="width: 32px; height: 32px; opacity: 0.3;"></i>
+          </div>
+        </div>
+        
+        <div class="card" style="background: linear-gradient(135deg, #4834d4 0%, #686de0 100%); color: white; border: none;">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div>
+              <div style="font-size: 13px; opacity: 0.9;">Eficiência</div>
+              <div style="font-size: 24px; font-weight: bold; margin: 5px 0;">85%</div>
+              <div style="font-size: 11px; opacity: 0.8;">Redução tempo</div>
+            </div>
+            <i data-lucide="zap" style="width: 32px; height: 32px; opacity: 0.3;"></i>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Formulário de Entrada -->
+      <div class="card" style="margin-bottom: 25px;">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+          <i data-lucide="message-square-plus" style="width: 20px; color: #0a4d33;"></i>
+          <h3 style="margin: 0; color: #0a4d33;">Nova Demanda para Análise</h3>
+        </div>
+        
+        <div style="margin-bottom: 15px;">
+          <label style="display: block; font-size: 13px; color: #666; margin-bottom: 8px; font-weight: 500;">Descreva detalhadamente a demanda de acessibilidade:</label>
+          
+          <!-- Opções de Anexo -->
+          <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+            <button class="attachment-btn" onclick="addAttachment('texto')" style="flex: 1; padding: 8px 12px; font-size: 13px; border: 1px solid #d4dbde; border-radius: 6px; background: #f8f9fa; cursor: pointer; transition: all 0.3s ease;">
+              <i data-lucide="file-text" style="width: 16px; margin-right: 6px;"></i>Texto
+            </button>
+            <button class="attachment-btn" onclick="addAttachment('imagem')" style="flex: 1; padding: 8px 12px; font-size: 13px; border: 1px solid #d4dbde; border-radius: 6px; background: #f8f9fa; cursor: pointer; transition: all 0.3s ease;">
+              <i data-lucide="image" style="width: 16px; margin-right: 6px;"></i>Imagem
+            </button>
+            <button class="attachment-btn" onclick="addAttachment('audio')" style="flex: 1; padding: 8px 12px; font-size: 13px; border: 1px solid #d4dbde; border-radius: 6px; background: #f8f9fa; cursor: pointer; transition: all 0.3s ease;">
+              <i data-lucide="mic" style="width: 16px; margin-right: 6px;"></i>Áudio
+            </button>
+          </div>
+          
+          <div style="position: relative;">
+            <textarea 
+              id="demanda-texto" 
+              placeholder="Ex: 'Funcionário com baixa visão não consegue utilizar o novo sistema de ponto eletrônico. O sistema não é compatível com leitores de tela e não possui navegação por teclado adequada.'"
+              style="width: 100%; min-height: 180px; max-height: 400px; padding: 18px; border: 2px solid #d4dbde; border-radius: 10px; font-size: 15px; resize: vertical; transition: all 0.3s ease; line-height: 1.6;"
+              onfocus="this.style.borderColor='#f0c400'; this.style.boxShadow='0 0 15px rgba(240,196,0,0.15)'; this.style.transform='translateY(-2px)'"
+              onblur="this.style.borderColor='#d4dbde'; this.style.boxShadow='none'; this.style.transform='translateY(0)'"
+            ></textarea>
+            <div style="position: absolute; bottom: 10px; right: 10px; font-size: 12px; color: #999;">
+              <span id="char-count">0</span>/500 caracteres
+            </div>
+          </div>
+          
+          <!-- Upload de Imagem -->
+          <label class="custum-file-upload" for="file">
+            <div class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="" viewBox="0 0 24 24"><g stroke-width="0" id="SVGRepo_bgCarrier"></g><g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g><g id="SVGRepo_iconCarrier"> <path fill="" d="M10 1C9.73478 1 9.48043 1.10536 9.29289 1.29289L3.29289 7.29289C3.10536 7.48043 3 7.73478 3 8V20C3 21.6569 4.34315 23 6 23H7C7.55228 23 8 22.5523 8 22C8 21.4477 7.55228 21 7 21H6C5.44772 21 5 20.5523 5 20V9H10C10.5523 9 11 8.55228 11 8V3H18C18.5523 3 19 3.44772 19 4V9C19 9.55228 19.4477 10 20 10C20.5523 10 21 9.55228 21 9V4C21 2.34315 19.6569 1 18 1H10ZM9 7H6.41421L9 4.41421V7ZM14 15.5C14 14.1193 15.1193 13 16.5 13C17.8807 13 19 14.1193 19 15.5V16V17H20C21.1046 17 22 17.8954 22 19C22 20.1046 21 1046 21 20 21H13C11.8954 21 11 20.1046 11 19C11 17.8954 11.8954 17 13 17H14V16V15.5ZM16.5 11C14.142 11 12.2076 12.8136 12.0156 15.122C10.2825 15.5606 9 17.1305 9 19C9 21.2091 10.7909 23 13 23H20C22.2091 23 24 21.2091 24 19C24 17.1305 22.7175 15.5606 20.9844 15.122C20.7924 12.8136 18.858 11 16.5 11Z" clip-rule="evenodd" fill-rule="evenodd"></path> </g></svg>
+            </div>
+            <div class="text">
+              <span>Click to upload image</span>
+            </div>
+            <input type="file" id="file">
+          </label>
+          
+          <!-- Upload de Áudio -->
+          <label class="custum-audio-upload" for="audio-file">
+            <div class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="" viewBox="0 0 24 24"><g stroke-width="0" id="SVGRepo_bgCarrier"></g><g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g><g id="SVGRepo_iconCarrier"> <path fill="" d="M12 1C11.4477 1 11 1.44772 11 2V14C11 14.5523 11.4477 15 12 15C12.5523 15 13 14.5523 13 14V2C13 1.44772 12.5523 1 12 1ZM17.7071 3.29289C17.3166 2.90237 16.6834 2.90237 16.2929 3.29289C15.9024 3.68342 15.9024 4.31658 16.2929 4.70711C18.5858 7.00002 18.5858 10.9999 16.2929 13.2929C15.9024 13.6834 15.9024 14.3166 16.2929 14.7071C16.6834 15.0976 17.3166 15.0976 17.7071 14.7071C20.4312 11.983 20.4312 7.01696 17.7071 4.29289ZM6.29289 3.29289C6.68342 2.90237 7.31658 2.90237 7.70711 3.29289C10.4312 6.01696 10.4312 10.983 7.70711 13.7071C7.31658 14.0976 6.68342 14.0976 6.29289 13.7071C5.90237 13.3166 5.90237 12.6834 6.29289 12.2929C8.58579 9.99997 8.58579 6.00003 6.29289 3.70711C5.90237 3.31658 5.90237 2.68342 6.29289 2.29289ZM14.1213 6.12132C13.7308 5.7308 13.0976 5.7308 12.7071 6.12132C11.5355 7.29289 11.5355 9.20711 12.7071 10.3787C13.0976 10.7692 13.7308 10.7692 14.1213 10.3787C14.5118 9.98814 14.5118 9.35498 14.1213 8.96447C13.7308 8.57394 13.7308 7.92606 14.1213 7.53553C14.5118 7.145 14.5118 6.51184 14.1213 6.12132ZM9.87868 6.12132C9.48816 6.51184 9.48816 7.145 9.87868 7.53553C10.2692 7.92606 10.2692 8.57394 9.87868 8.96447C9.48816 9.35498 9.48816 9.98814 9.87868 10.3787C10.2692 10.7692 10.9024 10.7692 11.2929 10.3787C12.4645 9.20711 12.4645 7.29289 11.2929 6.12132C10.9024 5.7308 10.2692 5.7308 9.87868 6.12132ZM7 17C5.89543 17 5 17.8954 5 19C5 20.1046 5.89543 21 7 21H17C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17H7Z" clip-rule="evenodd" fill-rule="evenodd"></path> </g></svg>
+            </div>
+            <div class="text">
+              <span>Click to upload audio</span>
+            </div>
+            <input type="file" id="audio-file" accept="audio/*">
+          </label>
+        </div>
+        
+        <div style="display: flex; gap: 10px;">
+          <button class="action" onclick="analisar()" style="flex: 1; padding: 12px 20px; font-size: 15px; font-weight: 600;">
+            <i data-lucide="cpu" style="width: 18px; margin-right: 8px;"></i>Analisar com IA
+          </button>
+          <button class="action" style="background: linear-gradient(135deg, #6c757d, #495057); padding: 12px 20px; font-size: 15px;" onclick="limparCampos()">
+            <i data-lucide="refresh-cw" style="width: 18px; margin-right: 8px;"></i>Limpar
+          </button>
+        </div>
+      </div>
+      
+      <!-- Resultado da Análise -->
+      <div id="resultado" class="card" style="display: none; background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%); border: 2px solid #f0c400;">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+          <i data-lucide="check-circle-2" style="width: 24px; color: #28a745;"></i>
+          <h3 style="margin: 0; color: #0a4d33;">Análise Concluída</h3>
+        </div>
+        
+        <div id="analise-conteudo" style="margin-bottom: 20px;"></div>
+        
+        <div style="display: flex; gap: 10px;">
+          <button class="action" onclick="criarDemanda()" style="background: linear-gradient(135deg, #28a745, #218838); padding: 8px 16px; font-size: 13px;">
+            <i data-lucide="plus-circle" style="width: 14px; margin-right: 5px;"></i>Criar Demanda
+          </button>
+          <button class="action" onclick="exportar()" style="background: linear-gradient(135deg, #17a2b8, #138496); padding: 8px 16px; font-size: 13px;">
+            <i data-lucide="download" style="width: 14px; margin-right: 5px;"></i>Exportar
+          </button>
+        </div>
+      </div>
+      
+      <!-- Classificações em Tempo Real -->
+      <div class="card">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+          <h3 style="margin: 0; color: #0a4d33; display: flex; align-items: center; gap: 10px;">
+            <i data-lucide="tags" style="width: 20px;"></i>
+            Classificações Automáticas
+          </h3>
+          <span style="background: linear-gradient(135deg, #e3f2fd, #bbdefb); color: #1565c0; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 500;">IA Ativa</span>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+          <div style="background: linear-gradient(135deg, #e8f5e9, #c8e6c9); padding: 15px; border-radius: 10px; border-left: 4px solid #4caf50;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <i data-lucide="category" style="width: 16px; color: #2e7d32;"></i>
+              <strong style="color: #2e7d32; font-size: 14px;">Tipo:</strong>
+            </div>
+            <div id="class-tipo" style="font-size: 16px; font-weight: 600; color: #333;">-</div>
+          </div>
+          
+          <div style="background: linear-gradient(135deg, #fff3e0, #ffe0b2); padding: 15px; border-radius: 10px; border-left: 4px solid #ff9800;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <i data-lucide="flag" style="width: 16px; color: #f57c00;"></i>
+              <strong style="color: #f57c00; font-size: 14px;">Prioridade:</strong>
+            </div>
+            <div id="class-prioridade" style="font-size: 16px; font-weight: 600; color: #333;">-</div>
+          </div>
+          
+          <div style="background: linear-gradient(135deg, #e3f2fd, #bbdefb); padding: 15px; border-radius: 10px; border-left: 4px solid #2196f3;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <i data-lucide="building" style="width: 16px; color: #1565c0;"></i>
+              <strong style="color: #1565c0; font-size: 14px;">Setor:</strong>
+            </div>
+            <div id="class-setor" style="font-size: 16px; font-weight: 600; color: #333;">-</div>
+          </div>
+          
+          <div style="background: linear-gradient(135deg, #fce4ec, #f8bbd9); padding: 15px; border-radius: 10px; border-left: 4px solid #e91e63;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <i data-lucide="git-branch" style="width: 16px; color: #c2185b;"></i>
+              <strong style="color: #c2185b; font-size: 14px;">Complexidade:</strong>
+            </div>
+            <div id="class-complexidade" style="font-size: 16px; font-weight: 600; color: #333;">-</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MEMÓRIA VIVA -->
+    <div id="memoria" class="page">
+      <div class="box" style="margin-bottom: 20px;">
+        <h3 style="margin-top: 0; color: #0a4d33; display: flex; align-items: center; gap: 10px;">
+          📚 Memória Viva
+        </h3>
+        <p style="color: #9c9a9a; margin-bottom: 15px; line-height: 1.6;">
+          <strong style="color: #0a4d33;">Histórico de Soluções:</strong> Demandas resolvidas automaticamente arquivadas para consulta rápida e reutilização de conhecimento.
+          Esta área mantém o registro permanente de todas as soluções implementadas com sucesso.
+        </p>
+        
+        
+        <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+          <div style="flex: 1; text-align: center; padding: 15px; background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-radius: 8px; border: 1px solid #2e7d32;">
+            <div style="font-size: 1.5rem; font-weight: bold; color: #2e7d32;" id="contador-memoria-viva">0</div>
+            <div style="font-size: 0.9rem; color: #2e7d32; margin-top: 5px;">Demandas Resolvidas</div>
+          </div>
+          <div style="flex: 1; text-align: center; padding: 15px; background: linear-gradient(135deg, #fff3e0, #ffe0b2); border-radius: 8px; border: 1px solid #f57c00;">
+            <div style="font-size: 1.5rem; font-weight: bold; color: #f57c00;" id="contador-economia-tempo">0h</div>
+            <div style="font-size: 0.9rem; color: #f57c00; margin-top: 5px;">Tempo Economizado</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Container para Memória Viva -->
+      <div id="memoria-viva-lista"></div>
+    </div>
+
+    <!-- RELATÓRIOS -->
+    <div id="relatorios" class="page">
+      <div class="box" style="margin-bottom: 20px;">
+        <h3 style="margin-top: 0; color: #0a4d33;">Período do Relatório</h3>
+        <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+          <select style="padding: 8px; border: 1px solid #d4dbde; border-radius: 5px;">
+            <option>Últimos 30 dias</option>
+            <option>Últimos 7 dias</option>
+            <option>Últimos 3 meses</option>
+            <option>Ano atual</option>
+          </select>
+          <button class="action" style="margin: 0;">Gerar Relatório</button>
+        </div>
+      </div>
+      
+      <div class="grid">
+        <div class="card">
+          <h4 style="margin-top: 0; color: #0a4d33;">Métricas de Desempenho</h4>
+          <div style="margin-top: 15px;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+              <span style="color: #666;">Tempo Médio Resposta:</span>
+              <strong>4.2 horas</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+              <span style="color: #666;">Taxa Resolução:</span>
+              <strong>87%</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+              <span style="color: #666;">Satisfação Usuários:</span>
+              <strong>4.6/5.0</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <span style="color: #666;">Redução Retrabalho:</span>
+              <strong style="color: #2e7d32;">-25%</strong>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <h4 style="margin-top: 0; color: #0a4d33;">Demandas por Setor</h4>
+          <div style="margin-top: 15px;">
+            <div style="margin-bottom: 10px;">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 3px;">
+                <span style="color: #666; font-size: 14px;">TI</span>
+                <span style="font-size: 14px;"><strong>45%</strong></span>
+              </div>
+              <div style="background: #e0e0e0; height: 8px; border-radius: 4px;">
+                <div style="background: #2196f3; width: 45%; height: 100%; border-radius: 4px;"></div>
+              </div>
+            </div>
+            <div style="margin-bottom: 10px;">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 3px;">
+                <span style="color: #666; font-size: 14px;">RH</span>
+                <span style="font-size: 14px;"><strong>30%</strong></span>
+              </div>
+              <div style="background: #e0e0e0; height: 8px; border-radius: 4px;">
+                <div style="background: #e91e63; width: 30%; height: 100%; border-radius: 4px;"></div>
+              </div>
+            </div>
+            <div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 3px;">
+                <span style="color: #666; font-size: 14px;">Engenharia</span>
+                <span style="font-size: 14px;"><strong>25%</strong></span>
+              </div>
+              <div style="background: #e0e0e0; height: 8px; border-radius: 4px;">
+                <div style="background: #9c27b0; width: 25%; height: 100%; border-radius: 4px;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <h4 style="margin-top: 0; color: #0a4d33;">Impacto da IA</h4>
+          <div style="margin-top: 15px;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+              <span style="color: #666;">Triagens Automáticas:</span>
+              <strong>156</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+              <span style="color: #666;">Precisão Classificação:</span>
+              <strong>92%</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+              <span style="color: #666;">Tempo Economizado:</span>
+              <strong>18 horas/semana</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <span style="color: #666;">Custos Reduzidos:</span>
+              <strong style="color: #2e7d32;">R$ 2.400/mês</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="box" style="margin-top: 20px;">
+        <h4 style="color: #0a4d33;">Tendências e Projeções</h4>
+        <p style="color: #666; line-height: 1.6;">
+          <strong>Projeção para próximos 90 dias:</strong> Com base nos dados atuais, esperamos reduzir o tempo de resposta em mais 15% 
+          e aumentar a taxa de resolução para 92%. A implementação de novos templates de solução deve reduzir o retrabalho 
+          em 40% e aumentar a reutilização de conhecimento em 60%.
+        </p>
+        <div style="margin-top: 15px; display: flex; gap: 10px;">
+          <button class="action" style="padding: 8px 16px; font-size: 14px;">
+            <i data-lucide="download" style="width: 14px; margin-right: 5px;"></i>Exportar PDF
+          </button>
+          <button class="action" style="background: #6c757d; padding: 8px 16px; font-size: 14px;">
+            <i data-lucide="mail" style="width: 14px; margin-right: 5px;"></i>Enviar por E-mail
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+  lucide.createIcons();
+</script>
+<script>
+const toggle = document.getElementById("menu-toggle");
+const sidebar = document.querySelector(".sidebar");
+const menuItems = document.querySelectorAll(".menu li");
+
+toggle.addEventListener("change", () => {
+  sidebar.classList.toggle("active");
+});
+
+// 🔥 FECHAR AO CLICAR EM UMA OPÇÃO
+menuItems.forEach(item => {
+  item.addEventListener("click", () => {
+    sidebar.classList.remove("active");
+    toggle.checked = false; // volta o botão pro estado normal
+  });
+});
+
+function toggleSidebar() {
+  const sidebar = document.querySelector('.sidebar');
+  sidebar.classList.toggle('collapsed');
+}
+</script>
+
+</body>
+</html>
